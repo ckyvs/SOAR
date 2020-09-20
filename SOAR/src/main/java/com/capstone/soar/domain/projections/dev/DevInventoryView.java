@@ -7,4 +7,5 @@ public interface DevInventoryView {
 	int getItemsInStock();
 	@Value("#{target.type.type}")
 	String getType();
+	byte[] getImage();
 }

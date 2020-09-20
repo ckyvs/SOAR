@@ -1,10 +1,10 @@
 package com.capstone.soar.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.ManagedBean;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,8 +27,16 @@ public class CartService {
 	@Autowired
 	InventoryRepository inventoryRepo;
 	
+	public Cart getCart(String username) {
+		Employee employee = employeeRepo.getEmployeeByEmail(username);
+		System.out.println(cartRepo.findByEmployee(employee));
+		return cartRepo.findByEmployee(employee);
+	}
+	
 	public void addToCart(String username, String inventoryName) {
 		Inventory inventory = inventoryRepo.findByName(inventoryName);
+		inventory.setItemsInStock(inventory.getItemsInStock()-1);
+		inventoryRepo.saveAndFlush(inventory);
 		System.out.println(inventory);
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
 		Cart cart = cartRepo.findByEmployee(employee);
@@ -45,6 +53,8 @@ public class CartService {
 	
 	public void removeFromCart(String username, String inventoryName) {
 		Inventory inventory = inventoryRepo.findByName(inventoryName);
+		inventory.setItemsInStock(inventory.getItemsInStock()+1);
+		inventoryRepo.saveAndFlush(inventory);
 		System.out.println(inventory);
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
 		Cart cart = cartRepo.findByEmployee(employee);

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ public class Request {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Inventory> inventories;
 	private Date createdDate;
 	private Date responseDate;
@@ -23,7 +24,7 @@ public class Request {
 	private Employee employee;
 	private String devRemarks;
 	private String managerRemarks;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private RequestStatus status;
 	private int totalItems;
 	private BigDecimal totalCost;

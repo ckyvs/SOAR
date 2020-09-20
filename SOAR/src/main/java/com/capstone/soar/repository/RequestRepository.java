@@ -16,8 +16,13 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
 	public List<PastRequestsView> findAllProjectedBy();
 	
+	public PastRequestsView findProjectedById(Long id);
+	
 	public List<PendingRequestsView> findAllProjectedByStatus(RequestStatus status);
 	
 	public List<RespondedRequestsView> findAllProjectedByStatusNot(RequestStatus status);
 	
+	public PendingRequestsView findOneProjectedById(Long id);
+	
+	public RespondedRequestsView findManProjectedById(Long id);
 }

@@ -13,8 +13,10 @@ interface PastInventoryView {
 
 
 public interface PastRequestsView {
+	Long getId();
 	Date getCreatedDate();
 	String getDevRemarks();
+	Date getResponseDate();
 	@Value("#{target.inventories}")
 	List<PastInventoryView> getInventories();
 	@Value("#{target.status.status}")

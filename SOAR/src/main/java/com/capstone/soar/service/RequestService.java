@@ -16,6 +16,7 @@ import com.capstone.soar.domain.Inventory;
 import com.capstone.soar.domain.Request;
 import com.capstone.soar.domain.RequestStatus;
 import com.capstone.soar.domain.projections.dev.PastRequestsView;
+import com.capstone.soar.domain.projections.manager.ManagerResponse;
 import com.capstone.soar.domain.projections.manager.PendingRequestsView;
 import com.capstone.soar.domain.projections.manager.RespondedRequestsView;
 import com.capstone.soar.repository.CartRepository;
@@ -32,23 +33,33 @@ public class RequestService {
 	EmployeeRepository employeeRepo;
 	
 	@Autowired
+	RequestStatusRepository statusRepo;
+	
+	@Autowired
 	CartRepository cartRepo;
 	
 	@Autowired
 	RequestStatusRepository requestStatusRepo;
+	
 	public List<PastRequestsView> getPastRequestsDev() {
 		return requestRepo.findAllProjectedBy();
 	}
 	
-	public void addRequest(String username) {
+	public PastRequestsView getPastRequestByIdDev(Long id) {
+		return requestRepo.findProjectedById(id);
+	}
+	
+	public RespondedRequestsView getRespondedRequestById(Long id) {
+		return requestRepo.findManProjectedById(id);
+	}
+	
+	public void addRequest(String remarks, String username) {
 		Request request = new Request();
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
 		Cart cart = cartRepo.findByEmployee(employee);
-		RequestStatus status = new RequestStatus();
+		RequestStatus status = statusRepo.findByStatus("PENDING");
 		BigDecimal totalCost = BigDecimal.ZERO;
 		int totalItems;
-		status.setId(1L);
-		status.setStatus("PENDING");
 		Set<Inventory> inventories = new HashSet<>(cart.getInventories());
 		totalItems = inventories.size();
 		for(Inventory i:inventories) {
@@ -56,7 +67,7 @@ public class RequestService {
 		}
 		request.setInventories(inventories);
 		request.setCreatedDate(new Date());
-		request.setDevRemarks(cart.getRemarks());
+		request.setDevRemarks(remarks);
 		request.setEmployee(employee);
 		request.setStatus(status);
 		request.setTotalItems(totalItems);
@@ -64,20 +75,26 @@ public class RequestService {
 		requestRepo.saveAndFlush(request);
 	}
 	
-	public List<PendingRequestsView> getPendingRequestsManager(String statusText) {
+	public List<PendingRequestsView> getPendingRequests(String statusText) {
 		RequestStatus status = requestStatusRepo.findByStatus(statusText);
 		return requestRepo.findAllProjectedByStatus(status);
 	}
 	
-	public List<RespondedRequestsView> getRespondedRequestsManager(String statusText) {
+	public List<RespondedRequestsView> getRespondedRequests(String statusText) {
 		RequestStatus status = requestStatusRepo.findByStatus(statusText);
 		return requestRepo.findAllProjectedByStatusNot(status);
 	}
 	
-	public void respondToRequest(Long id, String status) {
+	public void respondToRequest(Long id, ManagerResponse response) {
 		Request request = requestRepo.getOne(id);
-		RequestStatus statusObj = requestStatusRepo.findByStatus(status);
+		request.setManagerRemarks(response.getRemarks());
+		request.setResponseDate(new Date());
+		RequestStatus statusObj = requestStatusRepo.findByStatus(response.getStatus());
 		request.setStatus(statusObj);
 		requestRepo.saveAndFlush(request);
+	}
+	
+	public PendingRequestsView getPendingRequestById(Long id) {
+		return requestRepo.findOneProjectedById(id);
 	}
 }
