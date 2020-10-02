@@ -7,12 +7,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.0-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 	<groupId>com.capstone</groupId>
-	<artifactId>SOAR</artifactId>
+	<artifactId>SOAR-AK</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SOAR</name>
+	<name>SOAR-AK</name>
 	<description>Inventory Management and Allotment Application</description>
 
 	<properties>
@@ -70,6 +70,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>Soar-AK</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

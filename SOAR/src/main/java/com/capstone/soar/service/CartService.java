@@ -1,7 +1,6 @@
 package com.capstone.soar.service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.ManagedBean;
@@ -29,7 +28,6 @@ public class CartService {
 	
 	public Cart getCart(String username) {
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
-		System.out.println(cartRepo.findByEmployee(employee));
 		return cartRepo.findByEmployee(employee);
 	}
 	
@@ -37,13 +35,12 @@ public class CartService {
 		Inventory inventory = inventoryRepo.findByName(inventoryName);
 		inventory.setItemsInStock(inventory.getItemsInStock()-1);
 		inventoryRepo.saveAndFlush(inventory);
-		System.out.println(inventory);
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
 		Cart cart = cartRepo.findByEmployee(employee);
 		if(cart == null) {
 			cart = new Cart();
 			cart.setEmployee(employee);
-			cart.setInventories(new HashSet<Inventory>());
+			cart.setInventories(new HashSet<>());
 		}
 		Set<Inventory> updated = cart.getInventories();
 		updated.add(inventory);
@@ -55,7 +52,6 @@ public class CartService {
 		Inventory inventory = inventoryRepo.findByName(inventoryName);
 		inventory.setItemsInStock(inventory.getItemsInStock()+1);
 		inventoryRepo.saveAndFlush(inventory);
-		System.out.println(inventory);
 		Employee employee = employeeRepo.getEmployeeByEmail(username);
 		Cart cart = cartRepo.findByEmployee(employee);
 		Set<Inventory> updated = cart.getInventories();

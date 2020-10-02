@@ -26,7 +26,7 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
   }
 
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+  public UserDetails loadUserByUsername(String username) {
     Employee employee = employeeRepo.getEmployeeByEmail(username);
     if (employee == null) {
       throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));

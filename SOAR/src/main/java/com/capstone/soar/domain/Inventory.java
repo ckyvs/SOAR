@@ -21,13 +21,13 @@ public class Inventory implements Serializable{
 	private InventoryType type;
 	private BigDecimal cost;
 	private int itemsInStock;
-	private byte[] image;
+	private String image;
 	
 	
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public BigDecimal getCost() {

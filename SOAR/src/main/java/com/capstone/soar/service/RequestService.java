@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.annotation.ManagedBean;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.capstone.soar.domain.Cart;
@@ -41,6 +43,8 @@ public class RequestService {
 	@Autowired
 	RequestStatusRepository requestStatusRepo;
 	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	public List<PastRequestsView> getPastRequestsDev() {
 		return requestRepo.findAllProjectedBy();
 	}
@@ -72,6 +76,7 @@ public class RequestService {
 		request.setStatus(status);
 		request.setTotalItems(totalItems);
 		request.setTotalCost(totalCost);
+		logger.info("Request made by "+employee.getName()+" of total "+request.getTotalItems()+" costing "+request.getTotalCost());
 		requestRepo.saveAndFlush(request);
 	}
 	
@@ -91,6 +96,7 @@ public class RequestService {
 		request.setResponseDate(new Date());
 		RequestStatus statusObj = requestStatusRepo.findByStatus(response.getStatus());
 		request.setStatus(statusObj);
+		logger.info("Request with id:"+request.getId()+" got "+request.getStatus().getStatus()+" on "+request.getResponseDate());
 		requestRepo.saveAndFlush(request);
 	}
 	

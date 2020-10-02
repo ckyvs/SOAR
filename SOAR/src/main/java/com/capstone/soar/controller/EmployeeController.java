@@ -20,14 +20,14 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@GetMapping("/profile")
+	@GetMapping("/api/profile")
 	public SelfDetailsProjection getSelf() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		return employeeService.getSelfDetails(username);
 	}
 	
-	@PostMapping("/profile")
+	@PostMapping("/api/profile")
 	public void updateSelf(@RequestBody SelfDetails self) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();

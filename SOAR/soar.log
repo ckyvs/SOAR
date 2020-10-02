@@ -1,0 +1,127 @@
+2020-09-28 09:33:47.644  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:33:47.656  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:33:54.017  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 6.906 seconds (JVM running for 7.565)
+2020-09-28 09:34:15.972  WARN 3583 --- [http-nio-8080-exec-1] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2020-09-28 09:34:31.234  WARN 3583 --- [http-nio-8080-exec-3] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_EXPIRED
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2020-09-22T12:56:49Z. Current time: 2020-09-28T09:34:31Z, a difference of 506262227 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:385) ~[jjwt-0.9.1.jar:0.9.1]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481) ~[jjwt-0.9.1.jar:0.9.1]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541) ~[jjwt-0.9.1.jar:0.9.1]
+	at com.capstone.soar.security.jwt.JwtTokenUtil.getAllClaimsFromToken(JwtTokenUtil.java:51) ~[classes/:na]
+	at com.capstone.soar.security.jwt.JwtTokenUtil.getClaimFromToken(JwtTokenUtil.java:46) ~[classes/:na]
+	at com.capstone.soar.security.jwt.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:34) ~[classes/:na]
+	at com.capstone.soar.security.jwt.JwtTokenAuthorizationOncePerRequestFilter.doFilterInternal(JwtTokenAuthorizationOncePerRequestFilter.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204) [spring-security-web-5.4.0.jar:5.4.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) [spring-security-web-5.4.0.jar:5.4.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.3.0-RC1.jar:5.3.0-RC1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_261]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_261]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.38.jar:9.0.38]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_261]
+
+2020-09-28 09:35:38.538  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:35:38.539  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:35:40.344  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.847 seconds (JVM running for 113.892)
+2020-09-28 09:38:08.674  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:38:08.675  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:38:10.460  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.814 seconds (JVM running for 264.007)
+2020-09-28 09:38:41.499  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:38:41.499  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:38:43.162  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.694 seconds (JVM running for 296.71)
+2020-09-28 09:39:26.168  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:39:26.168  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:39:27.852  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.71 seconds (JVM running for 341.399)
+2020-09-28 09:39:59.885  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:39:59.886  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:40:01.491  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.63 seconds (JVM running for 375.039)
+2020-09-28 09:42:16.793  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:42:16.794  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:42:18.384  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.614 seconds (JVM running for 511.932)
+2020-09-28 09:42:58.452  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:42:58.453  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:42:59.943  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.514 seconds (JVM running for 553.491)
+2020-09-28 09:43:06.994  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:43:06.995  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:43:08.565  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.593 seconds (JVM running for 562.113)
+2020-09-28 09:43:13.542  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:43:13.542  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:43:15.073  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.549 seconds (JVM running for 568.62)
+2020-09-28 09:46:58.532  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:46:58.532  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:47:00.008  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.497 seconds (JVM running for 793.555)
+2020-09-28 09:47:11.966  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:47:11.967  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:47:13.508  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.561 seconds (JVM running for 807.055)
+2020-09-28 09:48:07.568  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:48:07.568  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:48:09.507  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.956 seconds (JVM running for 863.054)
+2020-09-28 09:48:13.985  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 09:48:13.986  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 09:48:15.467  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.5 seconds (JVM running for 869.015)
+2020-09-28 11:06:18.369  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 3583 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:06:18.369  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:06:19.910  INFO 3583 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.563 seconds (JVM running for 5553.457)
+2020-09-28 11:26:43.464  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:26:43.466  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:26:49.210  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 6.231 seconds (JVM running for 6.706)
+2020-09-28 11:27:30.922  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:27:30.922  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:27:33.010  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 2.145 seconds (JVM running for 50.506)
+2020-09-28 11:28:08.922  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:28:08.923  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:28:10.863  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.973 seconds (JVM running for 88.359)
+2020-09-28 11:30:41.250  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:30:41.251  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:30:43.011  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.792 seconds (JVM running for 240.507)
+2020-09-28 11:34:42.516  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:34:42.517  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:34:44.251  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.761 seconds (JVM running for 481.747)
+2020-09-28 11:45:50.970  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:45:50.970  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:45:52.585  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.641 seconds (JVM running for 1150.08)
+2020-09-28 11:46:23.633  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:46:23.633  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:46:25.293  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.682 seconds (JVM running for 1182.789)
+2020-09-28 11:49:28.641  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:49:28.641  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:49:30.262  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.646 seconds (JVM running for 1367.758)
+2020-09-28 11:49:53.333  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:49:53.334  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:49:54.851  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.537 seconds (JVM running for 1392.347)
+2020-09-28 11:50:11.784  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:50:11.784  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:50:13.694  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.928 seconds (JVM running for 1411.189)
+2020-09-28 11:50:29.321  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Starting SoarApplication using Java 1.8.0_261 on localhost.localdomain with PID 9480 (/home/ck/git/soar-service/SOAR/target/classes started by ck in /home/ck/git/soar-service/SOAR)
+2020-09-28 11:50:29.321  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : No active profile set, falling back to default profiles: default
+2020-09-28 11:50:30.804  INFO 9480 --- [restartedMain] com.capstone.soar.SoarApplication        : Started SoarApplication in 1.507 seconds (JVM running for 1428.3)

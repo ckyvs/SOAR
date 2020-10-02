@@ -2,6 +2,8 @@ package com.capstone.soar.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,31 +27,33 @@ public class EmployeeAdminController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@GetMapping("/employee-admin")
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@GetMapping("/api/employee-admin")
 	@PreAuthorize("hasAuthority('EMPLOYEE_ADMIN')")
 	public List<AdminAllEmployeesView> getAllEmployees() {
 		return employeeService.getAllEmployeeDetails();
 	}
 	
-	@GetMapping("/employee/{id}")
+	@GetMapping("/api/employee/{id}")
 	@PreAuthorize("hasAuthority('EMPLOYEE_ADMIN')")
 	public AdminAllEmployeesView getEmployee(@PathVariable Long id) {
 		return employeeService.getEmployeeDetails(id);
 	}
 	
-	@PostMapping("/employee")
+	@PostMapping("/api/employee")
 	@PreAuthorize("hasAuthority('EMPLOYEE_ADMIN')")
 	public void addEmployee(@RequestBody AdminEmployeeView employee) {
 		employeeService.addEmployee(employee);
 	}
 	
-	@DeleteMapping("/employee/{id}")
+	@DeleteMapping("/api/employee/{id}")
 	@PreAuthorize("hasAuthority('EMPLOYEE_ADMIN')")
 	public void deleteEmployee(@PathVariable Long id) {
 		employeeService.deleteEmployee(id);
 	}
 	
-	@PutMapping("/employee/{id}")
+	@PutMapping("/api/employee/{id}")
 	@PreAuthorize("hasAuthority('EMPLOYEE_ADMIN')")
 	public void updateEmployee(@PathVariable Long id,@RequestBody AdminEmployeeView employee) {
 		employeeService.updateEmployeeDetails(id, employee);

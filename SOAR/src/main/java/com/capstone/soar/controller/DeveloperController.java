@@ -3,6 +3,8 @@ package com.capstone.soar.controller;
 import java.util.HashSet;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +28,6 @@ import com.capstone.soar.service.RequestService;
 @CrossOrigin(origins="http://localhost:4200")
 public class DeveloperController {
 	
-	
 	@Autowired
 	InventoryService inventoryService;
 	
@@ -36,30 +37,31 @@ public class DeveloperController {
 	@Autowired
 	CartService cartService;
 	
+	Logger logger = LoggerFactory.getLogger(DeveloperController.class);
 	
 	//Get the inventory items which can be requested
-	@GetMapping("/get-inventory")
+	@GetMapping("/api/get-inventory")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public List<DevInventoryView> getAllInventory() {
 		return inventoryService.getDevItems();
 	}
 	
 	//Get all the past requests put by the developer
-	@GetMapping("/past-requests")
+	@GetMapping("/api/past-requests")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public List<PastRequestsView> getPastRequests() {
 		return requestService.getPastRequestsDev();
 	}
 	
 	//Get single request by developer
-	@GetMapping("/past-requests/{id}")
+	@GetMapping("/api/past-requests/{id}")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public PastRequestsView getPastRequestById(@PathVariable Long id) {
 		return requestService.getPastRequestByIdDev(id);
 	}
 	
 	//Add items to cart
-	@PostMapping("/add-cart")
+	@PostMapping("/api/add-cart")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public ResponseEntity<Void> addToCart(@RequestBody String inventoryName) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -69,7 +71,7 @@ public class DeveloperController {
 	}
 	
 	//Get Cart items
-	@GetMapping("/cart")
+	@GetMapping("/api/cart")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public Cart getCartItems() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -84,7 +86,7 @@ public class DeveloperController {
 	}
 	
 	//Remove items from cart
-	@PostMapping("/remove-cart")
+	@PostMapping("/api/remove-cart")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public void removeFromCart(@RequestBody String inventoryName) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -93,7 +95,7 @@ public class DeveloperController {
 	}
 	
 	//request items in cart
-	@PostMapping("/request")
+	@PostMapping("/api/request")
 	@PreAuthorize("hasAuthority('DEVELOPER')")
 	public void addRequest(@RequestBody String remarks) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

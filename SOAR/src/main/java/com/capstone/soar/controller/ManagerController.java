@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capstone.soar.domain.projections.dev.PastRequestsView;
 import com.capstone.soar.domain.projections.manager.ManagerResponse;
 import com.capstone.soar.domain.projections.manager.PendingRequestsView;
 import com.capstone.soar.domain.projections.manager.RespondedRequestsView;
@@ -24,31 +23,31 @@ public class ManagerController {
 	@Autowired
 	RequestService requestService;
 	
-	@GetMapping("/pending-requests")
+	@GetMapping("/api/pending-requests")
 	@PreAuthorize("hasAuthority('MANAGER')")
 	public List<PendingRequestsView> getAllPendingRequests() {
 		return requestService.getPendingRequests("PENDING");
 	}
 	
-	@PostMapping("/respond/{id}")
+	@PostMapping("/api/respond/{id}")
 	@PreAuthorize("hasAuthority('MANAGER')")
 	public void respondToRequest(@PathVariable Long id,@RequestBody ManagerResponse response) {
 		requestService.respondToRequest(id, response);
 	}
 	
-	@GetMapping("/responded-requests")
+	@GetMapping("/api/responded-requests")
 	@PreAuthorize("hasAuthority('MANAGER')")
 	public List<RespondedRequestsView> getAllPastRequests() {
 		return requestService.getRespondedRequests("PENDING");
 	}
 	
-	@GetMapping("/responded-requests/{id}")
+	@GetMapping("/api/responded-requests/{id}")
 	@PreAuthorize("hasAuthority('MANAGER')")
 	public RespondedRequestsView getPastRequestsBy(@PathVariable Long id) {
 		return requestService.getRespondedRequestById(id);
 	}
 	
-	@GetMapping("/pending-requests/{id}")
+	@GetMapping("/api/pending-requests/{id}")
 	@PreAuthorize("hasAuthority('MANAGER')")
 	public PendingRequestsView getPendingRequestById(@PathVariable Long id) {
 		return requestService.getPendingRequestById(id);

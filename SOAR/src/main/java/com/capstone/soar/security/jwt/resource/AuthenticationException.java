@@ -1,6 +1,8 @@
 package com.capstone.soar.security.jwt.resource;
 public class AuthenticationException extends RuntimeException {
-    public AuthenticationException(String message, Throwable cause) {
+	private static final long serialVersionUID = 1L;
+
+	public AuthenticationException(String message, Throwable cause) {
         super(message, cause);
     }
 }

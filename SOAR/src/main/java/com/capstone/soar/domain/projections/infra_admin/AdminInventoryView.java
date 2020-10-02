@@ -2,15 +2,13 @@ package com.capstone.soar.domain.projections.infra_admin;
 
 import java.math.BigDecimal;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class AdminInventoryView {
 	private Long id;
 	private String name;
 	private String type;
 	private int itemsInStock;
 	private BigDecimal cost;
-	private byte[] image;
+	private String image;
 	public Long getId() {
 		return id;
 	}
@@ -41,10 +39,10 @@ public class AdminInventoryView {
 	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	

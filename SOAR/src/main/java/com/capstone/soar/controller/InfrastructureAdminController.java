@@ -23,25 +23,25 @@ public class InfrastructureAdminController {
 	@Autowired
 	InventoryService inventoryService;
 
-	@GetMapping("/infra-admin")
+	@GetMapping("/api/infra-admin")
 	@PreAuthorize("hasAuthority('INFRA_ADMIN')")
 	public List<AdminInventoryReadOnlyView> getAllInventory() {
 		return inventoryService.getAdminItems();
 	}
 	
-	@PostMapping("/add-inventory")
+	@PostMapping("/api/add-inventory")
 	@PreAuthorize("hasAuthority('INFRA_ADMIN')")
 	public void addInventory(@RequestBody AdminInventoryView inventory){
 		inventoryService.addInventory(inventory);
 	}
 	
-	@PutMapping("/update-inventory/{id}")
+	@PutMapping("/api/update-inventory/{id}")
 	@PreAuthorize("hasAuthority('INFRA_ADMIN')")
 	public void updateInventory(@PathVariable Long id, @RequestBody AdminInventoryView inventory){
 		inventoryService.updateInventory(id, inventory);
 	}
 	
-	@GetMapping("/inventory/{id}")
+	@GetMapping("/api/inventory/{id}")
 	@PreAuthorize("hasAuthority('INFRA_ADMIN')")
 	public AdminInventoryReadOnlyView getOneInventory(@PathVariable Long id) {
 		return inventoryService.getOneAdminItem(id);
